@@ -25,6 +25,7 @@ class Game:
                     'quest': "Excellent!",
                     'throws': "Throw #{0}: {1}",
                     'restart': "Do you want to play more? y/n ",
+                    'how_many': "How many dices you wanna get? ",
                     'farewell': "So, good luck! "
                     }
         self.a = a
@@ -45,15 +46,17 @@ class Game:
         if q == 'n': 
             print(self.msg.get('farewell'))
         elif q == 'y': 
-            self.game_run()
+            num_of_dices = int(input(self.msg.get('how_many')))
+            self.game_run(num_of_dices)
 
-    def game_run(self): 
+    def game_run(self, num_of_dices=2): 
         self.num_of_games = self.num_of_games + 1
         target = []
         print(self.msg.get('quest'))
-        for dice in self.Dices():
-            print(dice)
-            target.append(dice)
+        for dice in range(num_of_dices):
+            for i in self.Dices():
+                print(i)
+                target.append(i)
         print(self.msg.get('throws').format(self.num_of_games, target))
         self.main('restart')
 
