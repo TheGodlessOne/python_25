@@ -10,11 +10,14 @@ class Game:
                     'farewell': "So, good luck! "
                     }
         
-    def Dices(self, a=48271, c=0, m=6): 
-        t0 = math.ceil(float(time.monotonic()))
-        t = [(a*t0 + c) % m for i in range(55)]
-        t.append((t[len(t)-55]+t[len(t)-24]) % 2^m)
-        return t[len(t)]
+    def Dices(self, a=48271, c=0, m=31): 
+        t = [math.ceil(float(time.monotonic()))]
+        for i in range(55):
+            t.append(int((a*t[i] + c) % (math.pow(2, m)-1)))
+        print(t)
+        t.append(int((t[len(t)-55]+t[len(t)-24]) % math.pow(2, m)))
+        print(t)
+        return t
 
     def main(self, invite='greet'): 
         q = input(self.msg.get(invite))
@@ -32,4 +35,4 @@ class Game:
         self.main('restart')
 
 game = Game(3)
-game.game_run()
+game.Dices()
