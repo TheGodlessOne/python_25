@@ -55,7 +55,6 @@ class Game:
         print(self.msg.get('quest'))
         for dice in range(num_of_dices):
             for i in self.Dices():
-                print(i)
                 target.append(i)
         print(self.msg.get('throws').format(self.num_of_games, target))
         self.main('restart')
