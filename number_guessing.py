@@ -19,7 +19,6 @@ class Game:
     def Random_Number(self):
         (a, c, m) = (48271, 0, 100)
         t = math.ceil(float(time.monotonic()))
-        print(t)
         t = (a * t + c) % m
         return t
 
@@ -34,7 +33,6 @@ class Game:
         target = int(self.Random_Number())
         print(self.msg.get('quest').format(self.min, self.max, self.lvl))
         i = 0
-        print("test: ", target)
         while i < self.lvl:
             a = int(input())
             i = i+1
