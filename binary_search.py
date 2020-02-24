@@ -2,7 +2,7 @@ class BinarySearch:
     def __init__(self, array): 
         self.arr = array 
         self.left = self.arr[0] 
-        self.right = self.arr[0] 
+        self.right = self.arr[-1] 
 
 
     def search(self, x, search_type): 
@@ -54,16 +54,13 @@ class BinarySearch:
 
 
 s_types = ['rec', 'iter']
-test_arr = [i for i in range(20)]
+test_arr = [i*2 for i in range(20)]
 print(test_arr)
-print(test_arr[-1])
-cases = [10, 10, test_arr[-1], -1, 100]
+cases = [test_arr[0], test_arr[-1], -1, 100]
 test_search = BinarySearch(test_arr)
 for s_type in s_types:
     print('Test the {0} alg'.format(s_type))
     for x in cases: 
-        print(x)
+        # print(x)
         if test_search.search(x, s_type) is not None: 
             print("Value {0} has index {1} by {2} algorithm".format(x, test_search.search(x, s_type), s_type))
-        else: 
-            print('None')
