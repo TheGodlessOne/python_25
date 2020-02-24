@@ -1,9 +1,24 @@
 def BinarySearchRecursive(array, left, right, x): 
-    return x
+    if right >= left: 
+        middle = left + (right - left)/2
+        if arr[middle] == x: 
+            return middle 
+        elif arr[middle] > x: 
+            return BinarySearchRecursive(arr, left, middle-1, x) 
+        else: 
+            return BinarySearchRecursive(arr, middle+1, right, x) 
 
 
 def BinarySearchIterative(array, left, right, x): 
-    return x
+    while left <= right: 
+        middle = left + (right - left)/2; 
+        if arr[middle] == x: 
+            return middle 
+        elif arr[middle] < x: 
+            left = middle + 1
+        else: 
+            right = middle - 1
+    return -1
 
 
 print('Test the empty array:')
