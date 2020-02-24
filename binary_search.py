@@ -1,46 +1,51 @@
-def BinarySearchRecursive(array, left, right, x): 
-    if right >= left: 
-        middle = left + (right - left)/2
-        if arr[middle] == x: 
-            return middle 
-        elif arr[middle] > x: 
-            return BinarySearchRecursive(arr, left, middle-1, x) 
-        else: 
-            return BinarySearchRecursive(arr, middle+1, right, x) 
+class BinarySearch:
+    def __init__(self, x, array, left, right): 
+        self.arr = array 
+        self.left = left 
+        self.right = right 
+        self.x = x
 
+    def recursive(self): 
+        if self.right >= self.left: 
+            middle = int(self.left + (self.right - self.left)/2)
+            if self.arr[middle] == self.x: 
+                return middle 
+            elif self.arr[middle] > self.x: 
+                self.right = middle - 1
+                return self.recursive() 
+            else: 
+                self.left = middle + 1
+                return self.recursive() 
 
-def BinarySearchIterative(array, left, right, x): 
-    while left <= right: 
-        middle = left + (right - left)/2; 
-        if arr[middle] == x: 
-            return middle 
-        elif arr[middle] < x: 
-            left = middle + 1
-        else: 
-            right = middle - 1
-    return -1
+    def iterative(self): 
+        while self.left <= self.right: 
+            middle = int(self.left + (self.right - self.left)/2) 
+            if self.arr[middle] == self.x: 
+                return middle 
+            elif self.arr[middle] < self.x: 
+                self.left = middle + 1
+            else: 
+                self.right = middle - 1
+        return None
 
 
 print('Test the empty array:')
-arr = [] 
-result_rec = BinarySearchRecursive(array, 0, len(arr)-1, x)
-result_iter = BinarySearchIterative(array, 0, len(arr)-1, x) 
+test_arr = [i for i in range(20)]
+test_search = BinarySearch(4, test_arr, 0, len(test_arr))
+print(test_search.recursive())
+print(test_search.iterative())
 
-arr = [i for i in range(20)]
-print('Test the non-existing element:')
-x = 40
-result_rec = BinarySearchRecursive(array, 0, len(arr)-1, x)
-result_iter = BinarySearchIterative(array, 0, len(arr)-1, x) 
-x = -1
-result_rec = BinarySearchRecursive(array, 0, len(arr)-1, x)
-result_iter = BinarySearchIterative(array, 0, len(arr)-1, x)  
+# arr = [i for i in range(20)]
+# print('Test the non-existing element:')
+# x = 40
 
-x3 = 0 
-print('Test the first element:')
-result_rec = BinarySearchRecursive(array, 0, len(arr)-1, x)
-result_iter = BinarySearchIterative(array, 0, len(arr)-1, x) 
+# x = -1
 
-x2 = 20
-print('Test the last element:')
-result_rec = BinarySearchRecursive(array, 0, len(arr)-1, x)
-result_iter = BinarySearchIterative(array, 0, len(arr)-1, x)  
+
+# x3 = 0 
+# print('Test the first element:')
+
+
+# x2 = 20
+# print('Test the last element:')
+  
