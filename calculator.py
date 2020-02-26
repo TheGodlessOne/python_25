@@ -2,6 +2,7 @@ from tkinter import *
 
 class Calc:
     def __init__(self, master):
+        self.x = self.y = None 
         self.func = {"+": None, "-": None, "*": None, "/": None, "=": None}
         self.num = {str(i+1): None for i in range(9)}
         self.entry = Entry(width = 10)
@@ -20,11 +21,12 @@ class Calc:
         self.num['0'] = Button(master, text = "{}".format(0))
         self.num['0'].grid(row = 5, column = 0)
 
+    def number_action():
+        
+
+    def func_action(): 
 
 
-
-for i in range(10):
-    print('{0}//3 {1}, {0}%3 {2}'.format(i, i//3, i%3))
 
 root = Tk()
 calc = Calc(root)
