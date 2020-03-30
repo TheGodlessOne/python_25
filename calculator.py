@@ -6,7 +6,7 @@ class Calc:
             Grid.rowconfigure(master, row_index, weight=1)
         for col_index in range(10):
             Grid.columnconfigure(master, col_index, weight=1)
-        self.x = ''
+        self.x = StringVar()
         self.expression = ''
         self.func = ('+', '-', '*', '/', '=', 'C')
         self.buttons = {}
@@ -14,7 +14,7 @@ class Calc:
         self.label = Label()
         self.label.grid(row = 0, column = 0, columnspan = 4, sticky = N+S+W+E)
 
-        self.entry = Entry(width = 10, text=0, justify=RIGHT)
+        self.entry = Entry(width = 10, textvariable=self.x, justify=RIGHT)
         self.entry.grid(row = 1, column = 0, columnspan = 4, sticky = N+S+W+E)
         
         for n in range(10):
@@ -24,8 +24,6 @@ class Calc:
         for f in self.func: 
             self.add_button(master, f)
             self.buttons.update({f: self.add_button(master,f)})
-
-        print(self.buttons)
 
         self.entry.delete(0, END)
         self.entry.icursor(0)
@@ -76,8 +74,10 @@ class Calc:
         self.clear(event)
 
     def clear(self, event): 
-        if self.buttons['C']['text'] == 'CE':
-            self.entry.delete(0, END)
+        self.buttons['C']['text'] == 'CE':
+        self.entry.delete(0, END)
+
+    def clear_all(self, event):
         elif self.buttons['C']['text'] == 'C': 
             self.label['text'] = ''
             self.expression = ''
